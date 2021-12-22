@@ -5,14 +5,13 @@ import { useEffect } from "react";
 import { useState } from 'react';
 import monthDiff from './components/monthDiff';
 import axios from "axios"
- 
+
 
 const App = () => {
 
              const [product, setProduct] = useState([]);
              const [search, setSearch] = useState("");
  
-
              const getProductData = async () => {
         try {
               const data = await axios.get(
@@ -25,22 +24,18 @@ const App = () => {
               console.log(e);   
             }
             };
-
             useEffect(() => {
             getProductData();
             }, []);
 
         return (
-    
-            <div className='App'>
-
- 
+          <div className='App'>
+            
             <input type='text'
             className='input'
             placeholder='search....'
             onChange={event => { setSearch(event.target.value) }} />
             {
-  
             product.filter((val) => {
             if (search === "")
             {
@@ -61,6 +56,7 @@ const App = () => {
             </div>
           );
           })}
+            
           </div>
   );
 };
